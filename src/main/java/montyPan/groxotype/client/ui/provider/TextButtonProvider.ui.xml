@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+	xmlns:f="urn:import:com.sencha.gxt.widget.core.client.form" 
+	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container">
+
+	<f:FieldLabel text="顯示文字">
+		<f:widget>
+			<f:TextField ui:field="text" />
+		</f:widget>
+	</f:FieldLabel>
+</ui:UiBinder>
