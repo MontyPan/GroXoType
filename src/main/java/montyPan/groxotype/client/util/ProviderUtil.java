@@ -5,6 +5,7 @@ import montyPan.groxotype.client.ui.provider.BorderLayoutProvider;
 import montyPan.groxotype.client.ui.provider.ContentPanelProvider;
 import montyPan.groxotype.client.ui.provider.EmptyProvider;
 import montyPan.groxotype.client.ui.provider.HVLayoutProvider;
+import montyPan.groxotype.client.ui.provider.TabPanelProvider;
 import montyPan.groxotype.client.ui.provider.TextButtonProvider;
 
 public class ProviderUtil {
@@ -29,6 +30,7 @@ public class ProviderUtil {
 	
 	public static void addComponentSet() {
 		ComponentSelector.addProvider(new TextButtonProvider());
+		ComponentSelector.addProvider(new TabPanelProvider());
 	}
 	
 	public static void addGroXoTypeSet() {
