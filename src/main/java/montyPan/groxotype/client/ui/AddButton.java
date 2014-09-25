@@ -1,5 +1,6 @@
 package montyPan.groxotype.client.ui;
 
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -11,6 +12,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 public class AddButton extends TextButton {
 	private ResizeContainer container;
 	
+	@UiConstructor
 	public AddButton(ResizeContainer container) {
 		this.container = container;
 		setText("+");
