@@ -2,6 +2,7 @@ package montyPan.groxotype.client.util;
 
 import montyPan.groxotype.client.ui.ComponentSelector;
 import montyPan.groxotype.client.ui.provider.BorderLayoutProvider;
+import montyPan.groxotype.client.ui.provider.ComboBoxProvider;
 import montyPan.groxotype.client.ui.provider.ContentPanelProvider;
 import montyPan.groxotype.client.ui.provider.EmptyProvider;
 import montyPan.groxotype.client.ui.provider.FieldLabelProvider;
@@ -10,6 +11,7 @@ import montyPan.groxotype.client.ui.provider.GridProvider;
 import montyPan.groxotype.client.ui.provider.HVLayoutProvider;
 import montyPan.groxotype.client.ui.provider.TabPanelProvider;
 import montyPan.groxotype.client.ui.provider.TextButtonProvider;
+import montyPan.groxotype.client.ui.provider.TextFieldProvider;
 
 public class ProviderUtil {
 	public static final String GROXOTYPE = "GroXoType";
@@ -34,8 +36,10 @@ public class ProviderUtil {
 	}
 	
 	public static void addComponentSet() {
+		ComponentSelector.addProvider(new ComboBoxProvider());
 		ComponentSelector.addProvider(new GridProvider());
 		ComponentSelector.addProvider(new TextButtonProvider());
+		ComponentSelector.addProvider(new TextFieldProvider());
 		ComponentSelector.addProvider(new TabPanelProvider());
 	}
 	

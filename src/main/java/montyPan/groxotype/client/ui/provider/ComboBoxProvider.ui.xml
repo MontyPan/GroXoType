@@ -3,9 +3,9 @@
 	xmlns:f="urn:import:com.sencha.gxt.widget.core.client.form" 
 	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container">
 
-	<f:FieldLabel text="CSV 格式資料" labelAlign="TOP">
+	<f:FieldLabel text="資料" labelAlign="TOP">
 		<f:widget>
-			<f:TextArea ui:field="csvData" width="300" height="300" />
+			<f:TextArea ui:field="data" height="300" />
 		</f:widget>
 	</f:FieldLabel>
 </ui:UiBinder>

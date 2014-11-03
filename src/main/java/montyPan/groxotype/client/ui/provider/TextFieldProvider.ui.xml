@@ -2,10 +2,5 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
 	xmlns:f="urn:import:com.sencha.gxt.widget.core.client.form" 
 	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container">
-
-	<f:FieldLabel text="CSV 格式資料" labelAlign="TOP">
-		<f:widget>
-			<f:TextArea ui:field="csvData" width="300" height="300" />
-		</f:widget>
-	</f:FieldLabel>
+	<f:CheckBox ui:field="isPassword" boxLabel="(Y) PasswordField / (N) TextField" />
 </ui:UiBinder>
