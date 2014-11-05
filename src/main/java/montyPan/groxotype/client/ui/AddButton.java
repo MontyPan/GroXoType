@@ -8,6 +8,7 @@ import com.sencha.gxt.widget.core.client.container.InsertResizeContainer;
 import com.sencha.gxt.widget.core.client.container.ResizeContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
+import com.sencha.gxt.widget.core.client.tree.Tree;
 
 public class AddButton extends TextButton {
 	private ResizeContainer container;
@@ -59,6 +60,12 @@ public class AddButton extends TextButton {
 		}
 		
 		container.forceLayout();
+		
+		// ==== 加到畫面上才有辦法操作的黑魔法區 ==== //
+		if (widget instanceof Tree<?, ?>) {
+			((Tree<?, ?>) widget).expandAll();
+		}
+		// ======== //
 	}
 		
 	class AddHandler implements SelectHandler {

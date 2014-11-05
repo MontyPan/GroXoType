@@ -12,6 +12,7 @@ import montyPan.groxotype.client.ui.provider.HVLayoutProvider;
 import montyPan.groxotype.client.ui.provider.TabPanelProvider;
 import montyPan.groxotype.client.ui.provider.TextButtonProvider;
 import montyPan.groxotype.client.ui.provider.TextFieldProvider;
+import montyPan.groxotype.client.ui.provider.TreeProvider;
 
 public class ProviderUtil {
 	public static final String GROXOTYPE = "GroXoType";
@@ -41,6 +42,7 @@ public class ProviderUtil {
 		ComponentSelector.addProvider(new TextButtonProvider());
 		ComponentSelector.addProvider(new TextFieldProvider());
 		ComponentSelector.addProvider(new TabPanelProvider());
+		ComponentSelector.addProvider(new TreeProvider());
 	}
 	
 	public static void addGroXoTypeSet() {
