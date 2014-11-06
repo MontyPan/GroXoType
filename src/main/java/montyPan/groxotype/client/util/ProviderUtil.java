@@ -2,6 +2,7 @@ package montyPan.groxotype.client.util;
 
 import montyPan.groxotype.client.ui.ComponentSelector;
 import montyPan.groxotype.client.ui.provider.BorderLayoutProvider;
+import montyPan.groxotype.client.ui.provider.CheckBoxProvider;
 import montyPan.groxotype.client.ui.provider.ComboBoxProvider;
 import montyPan.groxotype.client.ui.provider.ContentPanelProvider;
 import montyPan.groxotype.client.ui.provider.EmptyProvider;
@@ -37,6 +38,7 @@ public class ProviderUtil {
 	}
 	
 	public static void addComponentSet() {
+		ComponentSelector.addProvider(new CheckBoxProvider());
 		ComponentSelector.addProvider(new ComboBoxProvider());
 		ComponentSelector.addProvider(new GridProvider());
 		ComponentSelector.addProvider(new TextButtonProvider());

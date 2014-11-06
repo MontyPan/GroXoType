@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+	xmlns:f="urn:import:com.sencha.gxt.widget.core.client.form" 
+	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container">
+	<c:VerticalLayoutContainer>
+		<f:CheckBox ui:field="isRadio" boxLabel="(Y) Radio / (N) CheckBox" />
+		<f:CheckBox ui:field="isCheck" boxLabel="是否勾選？" />
+		<f:FieldLabel text="顯示字串" labelWidth="60">
+			<f:widget>
+				<f:TextField ui:field="boxLabel" />
+			</f:widget>
+		</f:FieldLabel>
+	</c:VerticalLayoutContainer>
+</ui:UiBinder>
