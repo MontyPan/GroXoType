@@ -11,6 +11,7 @@ import montyPan.groxotype.client.ui.provider.FieldSetProvider;
 import montyPan.groxotype.client.ui.provider.GridProvider;
 import montyPan.groxotype.client.ui.provider.HVLayoutProvider;
 import montyPan.groxotype.client.ui.provider.TabPanelProvider;
+import montyPan.groxotype.client.ui.provider.TextAreaProvider;
 import montyPan.groxotype.client.ui.provider.TextButtonProvider;
 import montyPan.groxotype.client.ui.provider.TextFieldProvider;
 import montyPan.groxotype.client.ui.provider.TreeProvider;
@@ -41,6 +42,7 @@ public class ProviderUtil {
 		ComponentSelector.addProvider(new CheckBoxProvider());
 		ComponentSelector.addProvider(new ComboBoxProvider());
 		ComponentSelector.addProvider(new GridProvider());
+		ComponentSelector.addProvider(new TextAreaProvider());
 		ComponentSelector.addProvider(new TextButtonProvider());
 		ComponentSelector.addProvider(new TextFieldProvider());
 		ComponentSelector.addProvider(new TabPanelProvider());
