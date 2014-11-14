@@ -59,52 +59,47 @@ public class GridProvider extends ComponentProvider {
 				new CsvModel(i, Arrays.asList(allLine[i].split(",")))
 			);
 		}
-		CsvGrid result = new CsvGrid(
-			Arrays.asList(allLine[0].split(",")),
-			data
+		
+		Grid<CsvModel> result = new Grid<>(
+			genListStore(), 
+			genColumnModel(Arrays.asList(allLine[0].split(",")))
 		);
+		result.getStore().addAll(data);
 		return result;
 	}
 	
-	private static class CsvGrid extends Grid<CsvModel> {
-		public CsvGrid(List<String> header, List<CsvModel> data) {
-			super(genListStore(), genColumnModel(header));
-			this.getStore().addAll(data);
-		}
-		
-		private static ListStore<CsvModel> genListStore() {
-			return new ListStore<>(new ModelKeyProvider<CsvModel>() {
-				@Override
-				public String getKey(CsvModel item) {
-					return "" + item.getIndex();
-				}
-			});
-		}
-		
-		private static ColumnModel<CsvModel> genColumnModel(List<String> header) {
-			ArrayList<ColumnConfig<CsvModel, ?>> configList = new ArrayList<>();
-			for (int i = 0; i < header.size(); i++) {
-				final int index = i;
-				configList.add(new ColumnConfig<CsvModel, String>(new ValueProvider<CsvModel, String>() {
-					@Override
-					public String getValue(CsvModel object) {
-						return object.getData().size() > index ?
-								object.getData().get(index) :
-								"";
-					}
-
-					@Override
-					public void setValue(CsvModel object, String value) {}
-
-					@Override
-					public String getPath() { return null; }
-				}, 100, header.get(i)));
+	private static ListStore<CsvModel> genListStore() {
+		return new ListStore<>(new ModelKeyProvider<CsvModel>() {
+			@Override
+			public String getKey(CsvModel item) {
+				return "" + item.getIndex();
 			}
-			
-			return new ColumnModel<>(configList);
-		}
+		});
 	}
 	
+	private static ColumnModel<CsvModel> genColumnModel(List<String> header) {
+		ArrayList<ColumnConfig<CsvModel, ?>> configList = new ArrayList<>();
+		for (int i = 0; i < header.size(); i++) {
+			final int index = i;
+			configList.add(new ColumnConfig<CsvModel, String>(new ValueProvider<CsvModel, String>() {
+				@Override
+				public String getValue(CsvModel object) {
+					return object.getData().size() > index ?
+							object.getData().get(index) :
+							"";
+				}
+
+				@Override
+				public void setValue(CsvModel object, String value) {}
+
+				@Override
+				public String getPath() { return null; }
+			}, 100, header.get(i)));
+		}
+		
+		return new ColumnModel<>(configList);
+	}
+		
 	private class CsvModel {
 		private int index;
 		private List<String> data;
