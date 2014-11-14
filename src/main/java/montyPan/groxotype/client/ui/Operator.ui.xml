@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:b="urn:import:com.sencha.gxt.widget.core.client.button" >
+	<ui:with field="width1" type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData">
+		<ui:attributes width="1" />
+	</ui:with>
+	<c:VerticalLayoutContainer>
+		<b:TextButton ui:field="genBtn" text="Generator" layoutData="{width1}" />
+	</c:VerticalLayoutContainer>
+</ui:UiBinder> 

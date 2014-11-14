@@ -31,6 +31,11 @@ GroXoType 是以 GXT 為基底的一個 prototype 系統。
 	後續就交給 `AddButton` 處理。
 
 
+> ###### 注意 ######
+> 如果要讓右鍵 context menu 能正常使用，
+> 在最初的 layout 當中，只能有一個 `AddButton`。
+
+
 GroXoType 的運作原理
 --------------------
 1. 當 `AddButton` 被按下時，會跳出 `ComponentSelector` 的視窗。

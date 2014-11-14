@@ -16,6 +16,7 @@ public class AddButton extends TextButton {
 	@UiConstructor
 	public AddButton(ResizeContainer container) {
 		this.container = container;
+		Operator.init(container);
 		setText("+");
 		this.addSelectHandler(new AddHandler(this));
 	}
