@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.widget.client.TextButton;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
@@ -42,7 +43,7 @@ public class ContentPanelProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		ContentPanel result = cOrF.getValue() ? new ContentPanel() : new FramedPanel();
 		
 		if (headingText.getValue() != null) {

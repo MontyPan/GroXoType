@@ -13,6 +13,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.IntegerField;
@@ -51,7 +52,7 @@ public class HVLayoutProvider extends ComponentProvider {
 	}
 	
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		if (horizontal) {
 			HorizontalLayoutContainer hlc = new HorizontalLayoutContainer();
 			for (int i = 0; i < childAmount.getValue(); i++) {

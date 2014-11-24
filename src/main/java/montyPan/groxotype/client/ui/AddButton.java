@@ -1,7 +1,7 @@
 package montyPan.groxotype.client.ui;
 
 import com.google.gwt.uibinder.client.UiConstructor;
-import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.InsertResizeContainer;
@@ -24,7 +24,7 @@ public class AddButton extends TextButton {
 	/**
 	 * @param widget 傳入 null，就是作 {@link AddButton#setVisible(boolean)} 讓 button 消失
 	 */
-	public void replace(Widget widget) {
+	public void replace(Component widget) {
 		if (widget == null) {
 			this.setVisible(false);
 			return;

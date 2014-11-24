@@ -8,6 +8,7 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
@@ -37,7 +38,7 @@ public class BorderLayoutProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		BorderLayoutContainer result = new BorderLayoutContainer();
 		if(east.getValue()) {
 			result.setEastWidget(new AddButton(result), genLayoutData());

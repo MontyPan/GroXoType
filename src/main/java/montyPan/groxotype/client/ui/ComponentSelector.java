@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
 
@@ -65,7 +65,7 @@ public class ComponentSelector {
 		instance.window.hide();
 	}
 
-	public static void replace(Widget component) {
+	public static void replace(Component component) {
 		instance.addButton.replace(component);
 	}
 	

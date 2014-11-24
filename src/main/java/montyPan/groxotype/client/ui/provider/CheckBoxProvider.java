@@ -7,6 +7,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.Radio;
 import com.sencha.gxt.widget.core.client.form.TextField;
@@ -35,7 +36,7 @@ public class CheckBoxProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		CheckBox result = isRadio.getValue() ? new Radio() : new CheckBox();
 		result.setValue(isCheck.getValue());
 		result.setBoxLabel(boxLabel.getValue());

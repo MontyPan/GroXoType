@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
@@ -51,7 +52,7 @@ public class GridProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		String[] allLine = csvData.getValue().split("\n");
 		ArrayList<CsvModel> data = new ArrayList<>(allLine.length - 1);
 		for (int i = 1; i < allLine.length; i++) {

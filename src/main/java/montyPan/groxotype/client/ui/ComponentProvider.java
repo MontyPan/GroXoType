@@ -1,6 +1,7 @@
 package montyPan.groxotype.client.ui;
 
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.Dialog.PredefinedButton;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -42,7 +43,7 @@ public abstract class ComponentProvider {
 
 	public abstract String getCategory();
 	protected abstract String buttonText();
-	protected abstract Widget genComponent();
+	protected abstract Component genComponent();
 
 	public TextButton getButton() {
 		button.setText(buttonText());

@@ -13,6 +13,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.TabPanel.TabPanelBottomAppearance;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
@@ -45,7 +46,7 @@ public class TabPanelProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		TabPanel result = topOrBottom.getValue() ? new TabPanel() :
 			new TabPanel(GWT.<TabPanelBottomAppearance>create(TabPanelBottomAppearance.class));
 		

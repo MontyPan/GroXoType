@@ -1,10 +1,10 @@
 package montyPan.groxotype.client.ui.provider;
 
-import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.widget.core.client.form.TextArea;
-
 import montyPan.groxotype.client.ui.ComponentProvider;
 import montyPan.groxotype.client.util.ProviderUtil;
+
+import com.sencha.gxt.widget.core.client.Component;
+import com.sencha.gxt.widget.core.client.form.TextArea;
 
 public class TextAreaProvider extends ComponentProvider {
 	@Override
@@ -18,7 +18,7 @@ public class TextAreaProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Widget genComponent() {
+	protected Component genComponent() {
 		return new TextArea();
 	}
 }
