@@ -13,14 +13,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.TabPanel.TabPanelBottomAppearance;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.IntegerField;
 
-public class TabPanelProvider extends ComponentProvider {
+public class TabPanelProvider extends ComponentProvider<TabPanel> {
 	interface MyUiBinder extends UiBinder<Widget, TabPanelProvider> {}
 	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 	
@@ -46,13 +45,13 @@ public class TabPanelProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected TabPanel genComponent() {
 		TabPanel result = topOrBottom.getValue() ? new TabPanel() :
 			new TabPanel(GWT.<TabPanelBottomAppearance>create(TabPanelBottomAppearance.class));
 		
 		for (int i = 0; i < childAmount.getValue(); i++) {
 			result.add(
-				new AddButton(result.getContainer()), 
+				new AddButton(result.getContainer()),
 				editorList.get(i).getTabItemConfig()
 			);
 		}

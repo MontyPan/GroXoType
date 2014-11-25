@@ -8,12 +8,11 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 
-public class BorderLayoutProvider extends ComponentProvider {
+public class BorderLayoutProvider extends ComponentProvider<BorderLayoutContainer> {
 	interface MyUiBinder extends UiBinder<Widget, BorderLayoutProvider> {}
 	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 	
@@ -31,14 +30,14 @@ public class BorderLayoutProvider extends ComponentProvider {
 	protected String buttonText() {
 		return "Border";
 	}
-		
+	
 	@Override
 	public Widget genSettingView() {
 		return uiBinder.createAndBindUi(this);
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected BorderLayoutContainer genComponent() {
 		BorderLayoutContainer result = new BorderLayoutContainer();
 		if(east.getValue()) {
 			result.setEastWidget(new AddButton(result), genLayoutData());

@@ -10,11 +10,10 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.TreeStore;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
-public class TreeProvider extends ComponentProvider {
+public class TreeProvider extends ComponentProvider<Tree<String, String>> {
 	interface MyUiBinder extends UiBinder<Widget, TreeProvider> {}
 	private MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 	
@@ -50,7 +49,7 @@ public class TreeProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected Tree<String, String> genComponent() {
 		TreeStore<String> store = new TreeStore<>(new ModelKeyProvider<String>() {
 			@Override
 			public String getKey(String item) {

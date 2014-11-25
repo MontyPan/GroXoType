@@ -9,7 +9,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.widget.client.TextButton;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
@@ -18,7 +17,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 /**
  * {@link ContentPanel} 跟 {@link FramedPanel} 都一樣，所以就共用 provider。
  */
-public class ContentPanelProvider extends ComponentProvider {
+public class ContentPanelProvider extends ComponentProvider<ContentPanel> {
 	interface MyUiBinder extends UiBinder<Widget, ContentPanelProvider> {}
 	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
@@ -43,7 +42,7 @@ public class ContentPanelProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected ContentPanel genComponent() {
 		ContentPanel result = cOrF.getValue() ? new ContentPanel() : new FramedPanel();
 		
 		if (headingText.getValue() != null) {

@@ -9,11 +9,10 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.form.StringComboBox;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 
-public class ComboBoxProvider extends ComponentProvider {
+public class ComboBoxProvider extends ComponentProvider<StringComboBox> {
 	interface MyUiBinder extends UiBinder<Widget, ComboBoxProvider> {}
 	private MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 	
@@ -37,11 +36,10 @@ public class ComboBoxProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected StringComboBox genComponent() {
 		StringComboBox result = new StringComboBox(
 			Arrays.asList(data.getValue().split("\n"))
 		);
 		return result;
 	}
-
 }

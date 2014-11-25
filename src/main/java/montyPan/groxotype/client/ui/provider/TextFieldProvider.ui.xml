@@ -1,6 +1,0 @@
-<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
-	xmlns:f="urn:import:com.sencha.gxt.widget.core.client.form" 
-	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container">
-	<f:CheckBox ui:field="isPassword" boxLabel="(Y) PasswordField / (N) TextField" />
-</ui:UiBinder>

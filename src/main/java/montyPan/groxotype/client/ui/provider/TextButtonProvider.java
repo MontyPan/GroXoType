@@ -7,11 +7,10 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
-public class TextButtonProvider extends ComponentProvider {
+public class TextButtonProvider extends ComponentProvider<TextButton> {
 	interface MyUiBinder extends UiBinder<Widget, TextButtonProvider> {}
 	private MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 	
@@ -33,7 +32,7 @@ public class TextButtonProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected TextButton genComponent() {
 		return new TextButton(text.getValue());
 	}
 }

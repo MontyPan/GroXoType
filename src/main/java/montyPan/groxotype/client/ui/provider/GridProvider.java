@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import montyPan.groxotype.client.ui.ComponentProvider;
+import montyPan.groxotype.client.ui.provider.GridProvider.CsvModel;
 import montyPan.groxotype.client.util.ProviderUtil;
 
 import com.google.gwt.core.client.GWT;
@@ -14,13 +15,12 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
-public class GridProvider extends ComponentProvider {
+public class GridProvider extends ComponentProvider<Grid<CsvModel>> {
 	interface MyUiBinder extends UiBinder<Widget, GridProvider> {}
 	private MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 	
@@ -43,7 +43,7 @@ public class GridProvider extends ComponentProvider {
 		StringBuffer sb = new StringBuffer("header1, hader2, header3\n");
 		for (int i = 1; i < 5; i++) {
 			for (int j = 1; j < 4; j++) {
-				sb.append("data" + i + "-" + j + ",");	
+				sb.append("data" + i + "-" + j + ",");
 			}
 			sb.append("\n");
 		}
@@ -52,7 +52,7 @@ public class GridProvider extends ComponentProvider {
 	}
 
 	@Override
-	protected Component genComponent() {
+	protected Grid<CsvModel> genComponent() {
 		String[] allLine = csvData.getValue().split("\n");
 		ArrayList<CsvModel> data = new ArrayList<>(allLine.length - 1);
 		for (int i = 1; i < allLine.length; i++) {
@@ -62,7 +62,7 @@ public class GridProvider extends ComponentProvider {
 		}
 		
 		Grid<CsvModel> result = new Grid<>(
-			genListStore(), 
+			genListStore(),
 			genColumnModel(Arrays.asList(allLine[0].split(",")))
 		);
 		result.getStore().addAll(data);
@@ -101,7 +101,7 @@ public class GridProvider extends ComponentProvider {
 		return new ColumnModel<>(configList);
 	}
 		
-	private class CsvModel {
+	class CsvModel {
 		private int index;
 		private List<String> data;
 		public CsvModel(int index, List<String> data) {

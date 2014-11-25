@@ -5,7 +5,7 @@ import montyPan.groxotype.client.util.ProviderUtil;
 
 import com.sencha.gxt.widget.core.client.Component;
 
-public class EmptyProvider extends ComponentProvider {
+public class EmptyProvider extends ComponentProvider<Component> {
 
 	@Override
 	public String getCategory() {

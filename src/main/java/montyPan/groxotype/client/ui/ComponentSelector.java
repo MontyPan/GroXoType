@@ -26,7 +26,7 @@ public class ComponentSelector {
 		this.addButton = addButton;
 	}
 
-	private void add(ComponentProvider provider) {
+	private void add(ComponentProvider<? extends Component> provider) {
 		String category = provider.getCategory();
 		CategoryView view = map.get(category);
 		
@@ -69,7 +69,7 @@ public class ComponentSelector {
 		instance.addButton.replace(component);
 	}
 	
-	public static void addProvider(ComponentProvider cp) {
+	public static void addProvider(ComponentProvider<? extends Component> cp) {
 		instance.add(cp);
 	}
 }

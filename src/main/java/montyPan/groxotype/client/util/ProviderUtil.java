@@ -9,12 +9,13 @@ import montyPan.groxotype.client.ui.provider.EmptyProvider;
 import montyPan.groxotype.client.ui.provider.FieldLabelProvider;
 import montyPan.groxotype.client.ui.provider.FieldSetProvider;
 import montyPan.groxotype.client.ui.provider.GridProvider;
-import montyPan.groxotype.client.ui.provider.HVLayoutProvider;
+import montyPan.groxotype.client.ui.provider.HorizontalLayoutProvider;
 import montyPan.groxotype.client.ui.provider.TabPanelProvider;
 import montyPan.groxotype.client.ui.provider.TextAreaProvider;
 import montyPan.groxotype.client.ui.provider.TextButtonProvider;
 import montyPan.groxotype.client.ui.provider.TextFieldProvider;
 import montyPan.groxotype.client.ui.provider.TreeProvider;
+import montyPan.groxotype.client.ui.provider.VerticalLayoutProvider;
 
 public class ProviderUtil {
 	public static final String GROXOTYPE = "GroXoType";
@@ -34,8 +35,8 @@ public class ProviderUtil {
 		ComponentSelector.addProvider(new ContentPanelProvider());
 		ComponentSelector.addProvider(new FieldLabelProvider());
 		ComponentSelector.addProvider(new FieldSetProvider());
-		ComponentSelector.addProvider(new HVLayoutProvider(true));
-		ComponentSelector.addProvider(new HVLayoutProvider(false));
+		ComponentSelector.addProvider(new HorizontalLayoutProvider());
+		ComponentSelector.addProvider(new VerticalLayoutProvider());
 	}
 	
 	public static void addComponentSet() {
