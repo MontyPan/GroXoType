@@ -1,7 +1,11 @@
 package montyPan.groxotype.client.ui.provider;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
+import montyPan.groxotype.client.generator.GenUtil;
+import montyPan.groxotype.client.generator.TagHelper;
 import montyPan.groxotype.client.ui.AddButton;
 import montyPan.groxotype.client.ui.ComponentProvider;
 import montyPan.groxotype.client.util.ProviderUtil;
@@ -57,6 +61,26 @@ public class FieldLabelProvider extends ComponentProvider<FieldLabel> {
 		result.setLabelAlign(labelAlign.getValue());
 		result.setLabelWidth(labelWidth.getValue());
 		result.setWidget(new AddButton(result));
+		return result;
+	}
+	
+
+	@Override
+	protected HashMap<String, Object> genAttrMap(FieldLabel component) {
+		HashMap<String, Object> result = new HashMap<>();
+		String text = component.getText();
+		result.put("text", text.substring(0, text.length() - component.getLabelSeparator().length()));
+		result.put("labelAlign", component.getLabelAlign());
+		result.put("labelWidth", component.getLabelWidth());
+		return result;
+	}
+	
+	@Override
+	protected ArrayList<String> genContext() {
+		ArrayList<String> result = new ArrayList<>();
+		result.add("\t" + TagHelper.fakeHeader("widget"));
+		result.add("\t\t" + GenUtil.CHILD);
+		result.add("\t" + TagHelper.fakeTail("widget"));
 		return result;
 	}
 }

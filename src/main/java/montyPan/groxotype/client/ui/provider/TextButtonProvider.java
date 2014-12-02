@@ -1,5 +1,7 @@
 package montyPan.groxotype.client.ui.provider;
 
+import java.util.HashMap;
+
 import montyPan.groxotype.client.ui.ComponentProvider;
 import montyPan.groxotype.client.util.ProviderUtil;
 
@@ -34,5 +36,12 @@ public class TextButtonProvider extends ComponentProvider<TextButton> {
 	@Override
 	protected TextButton genComponent() {
 		return new TextButton(text.getValue());
+	}
+	
+	@Override
+	protected HashMap<String, Object> genAttrMap(TextButton component) {
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("text", component.getText());
+		return result;
 	}
 }

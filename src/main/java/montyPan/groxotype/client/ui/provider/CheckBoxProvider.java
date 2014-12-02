@@ -1,5 +1,7 @@
 package montyPan.groxotype.client.ui.provider;
 
+import java.util.HashMap;
+
 import montyPan.groxotype.client.ui.ComponentProvider;
 import montyPan.groxotype.client.util.ProviderUtil;
 
@@ -39,6 +41,14 @@ public class CheckBoxProvider extends ComponentProvider<CheckBox> {
 		CheckBox result = isRadio.getValue() ? new Radio() : new CheckBox();
 		result.setValue(isCheck.getValue());
 		result.setBoxLabel(boxLabel.getValue());
+		return result;
+	}
+	
+	@Override
+	protected HashMap<String, Object> genAttrMap(CheckBox component) {
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("boxLabel", component.getBoxLabel());
+		result.put("value", component.getValue());
 		return result;
 	}
 }
