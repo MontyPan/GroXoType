@@ -12,8 +12,6 @@ public class GenUtil {
 	public static final String NAMESPACE = "--NS--";
 
 	public static void setAttribute(Component component, HashMap<String, Object> map) {
-		if (map == null || map.size() == 0) { return; }
-
 		component.setData(ATTRIBUTE, map);
 	}
 	
