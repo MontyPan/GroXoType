@@ -78,9 +78,9 @@ public class FieldLabelProvider extends ComponentProvider<FieldLabel> {
 	@Override
 	protected ArrayList<String> genContext() {
 		ArrayList<String> result = new ArrayList<>();
-		result.add("\t" + TagHelper.fakeHeader("widget"));
-		result.add("\t\t" + GenUtil.CHILD);
-		result.add("\t" + TagHelper.fakeTail("widget"));
+		result.add(TagHelper.fakeHeader("widget"));
+		result.add("\t" + GenUtil.CHILD);
+		result.add(TagHelper.fakeTail("widget"));
 		return result;
 	}
 }

@@ -33,15 +33,22 @@ public class UiXmlGenerator {
 		ArrayList<String> context = (ArrayList<String>)rootNode.getData(GenUtil.CONTEXT);
 		if (context != null) {
 			for (String line : context) {
+				//XXX 這裡假設偽 element 跟 CHILD 不會在同一行
 				if (line.contains(GenUtil.NAMESPACE)) {
 					line = line.replace(GenUtil.NAMESPACE, nsHelper.getNamespace(rootNode));
+					//讓 genContent() 每一行開頭可以少打一個 \t，所以這裡幫忙補上
+					code.append(GenUtil.genTab(level + 1) + line + "\n");
+					continue;
 				}
-				if (line.contains(GenUtil.CHILD)) {
-					//TODO 縮排對齊的問題
-					line = line.replace(GenUtil.CHILD, childContext);
+				
+				int childIndex = line.indexOf(GenUtil.CHILD);
+				if (childIndex != -1) {
+					String lineStart = line.substring(0, childIndex);
+					for (String childLine : childContext.toString().split("\n")) {
+						//因為 child 的 level 本來就會比 parent 多一個，這裡就扣回來
+						code.append(GenUtil.genTab(level - 1) + lineStart + childLine + "\n");
+					}
 				}
-				line = GenUtil.genTab(level) + line + "\n";
-				code.append(line);
 			}
 		} else {
 			code.append(childContext);
