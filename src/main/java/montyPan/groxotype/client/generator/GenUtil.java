@@ -39,4 +39,8 @@ public class GenUtil {
 		}
 		return result.toString();
 	}
+	
+	public static String uiWithHeader(String name, Class<?> clazz) {
+		return "<ui:with field=\"" + name + "\" type=\"" + ClassUtil.fullName(clazz.getName()) + "\">";
+	}
 }

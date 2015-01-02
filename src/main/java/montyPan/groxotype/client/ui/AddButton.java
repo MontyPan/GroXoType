@@ -2,6 +2,8 @@ package montyPan.groxotype.client.ui;
 
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.sencha.gxt.widget.core.client.Component;
+import com.sencha.gxt.widget.core.client.TabItemConfig;
+import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.InsertResizeContainer;
@@ -34,8 +36,17 @@ public class AddButton extends TextButton {
 
 		if (container instanceof InsertResizeContainer) {
 			int index = container.getWidgetIndex(this);
-			((InsertResizeContainer) container).insert(widget, index);
-			container.remove(this);
+			if (container.getParent() instanceof TabPanel) {	//就是要跟別人不一樣的 TabPanel [怒]
+				//這時候的 container 是 TabPanel 裡頭的 CardLayoutContainer
+				TabPanel tabPanel = (TabPanel) container.getParent();
+				TabItemConfig config = tabPanel.getConfig(this);
+				tabPanel.remove(this);
+				tabPanel.insert(widget, index ,config);
+				tabPanel.setActiveWidget(widget);
+			} else {
+				((InsertResizeContainer) container).insert(widget, index);
+				container.remove(this);
+			}
 		} else if (container instanceof BorderLayoutContainer) {
 			//BorderLayout 不能直接用 add，東西南北需要分別處理
 			BorderLayoutContainer b = (BorderLayoutContainer) container;
@@ -53,7 +64,7 @@ public class AddButton extends TextButton {
 			}
 			if (b.getCenterWidget() == this) {
 				b.setCenterWidget(widget);
-			}			
+			}
 		} else {
 			//理論上 container 就是 SimpleContainer
 			container.remove(this);

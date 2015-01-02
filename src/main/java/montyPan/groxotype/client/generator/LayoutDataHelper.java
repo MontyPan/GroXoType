@@ -82,7 +82,7 @@ public class LayoutDataHelper {
 		StringBuffer result = new StringBuffer();
 		for (String name : vldMap.keySet()) {
 			VerticalLayoutData ld = vldMap.get(name);
-			result.append("\t" + uiWithHeader(name, ld.getClass()) + "\n");
+			result.append("\t" + GenUtil.uiWithHeader(name, ld.getClass()) + "\n");
 
 			result.append("\t\t<ui:attributes ");
 			result.append(ld.getWidth() == -1 ? "" : "width=\"" + ld.getWidth() + "\" ");
@@ -94,7 +94,7 @@ public class LayoutDataHelper {
 		
 		for (String name : hldMap.keySet()) {
 			HorizontalLayoutData ld = hldMap.get(name);
-			result.append("\t" + uiWithHeader(name, ld.getClass()) + "\n");
+			result.append("\t" + GenUtil.uiWithHeader(name, ld.getClass()) + "\n");
 			
 			result.append("\t\t<ui:attributes ");
 			result.append(ld.getWidth() == -1 ? "" : "width=\"" + ld.getWidth() + "\" ");
@@ -106,7 +106,7 @@ public class LayoutDataHelper {
 		
 		for (String name : bldMap.keySet()) {
 			BorderLayoutData ld = bldMap.get(name);
-			result.append("\t" + uiWithHeader(name, ld.getClass()) + "\n");
+			result.append("\t" + GenUtil.uiWithHeader(name, ld.getClass()) + "\n");
 			
 			result.append("\t\t<ui:attributes ");
 			result.append("size=\"" + ld.getSize() + "\" ");
@@ -117,11 +117,7 @@ public class LayoutDataHelper {
 		
 		return result.toString();
 	}
-	
-	private static String uiWithHeader(String name, Class<?> ldClass) {
-		return "<ui:with field=\"" + name + "\" type=\"" + ClassUtil.fullName(ldClass.getName()) + "\">";
-	}
-	
+		
 	private static final VerticalLayoutData defaultVLD = new VerticalLayoutData(-1, -1);
 	private static boolean isEqual(VerticalLayoutData vld1, VerticalLayoutData vld2) {
 		//XXX 因為目前也沒有給 margin，所以就跳過 margin 的判斷  [茶]
