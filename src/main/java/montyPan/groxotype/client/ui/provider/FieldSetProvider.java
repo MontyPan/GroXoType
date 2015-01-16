@@ -1,5 +1,7 @@
 package montyPan.groxotype.client.ui.provider;
 
+import java.util.HashMap;
+
 import montyPan.groxotype.client.ui.AddButton;
 import montyPan.groxotype.client.ui.ComponentProvider;
 import montyPan.groxotype.client.util.ProviderUtil;
@@ -37,6 +39,13 @@ public class FieldSetProvider extends ComponentProvider<FieldSet> {
 		FieldSet result = new FieldSet();
 		result.setHeadingText(text.getValue());
 		result.setWidget(new AddButton(result));
+		return result;
+	}
+	
+	@Override
+	protected HashMap<String, Object> genAttrMap(FieldSet component) {
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("headingText", component.getHeadingText());
 		return result;
 	}
 }
