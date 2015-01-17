@@ -35,9 +35,8 @@ public class LayoutDataHelper {
 			ldValue = vertical((VerticalLayoutData)ld);
 		} else if (ld instanceof HorizontalLayoutData) {
 			ldValue = horizontal((HorizontalLayoutData)ld);
-		} else if (ld instanceof BorderLayoutData) {
-			ldValue = border((BorderLayoutData)ld);
 		}
+		//BorderLayoutData 無法在這裡直接處理
 		
 		if (ldValue == null) { return; }
 		attrMap.put("layoutData", "{" + ldValue + "}");
@@ -71,7 +70,7 @@ public class LayoutDataHelper {
 		return name;
 	}
 	
-	private String border(BorderLayoutData ld) {
+	public String border(BorderLayoutData ld) {
 		//BorderLayoutData 基本上一定要給，所以不判斷 default、也不判斷重複
 		String name = BLD + bldIndex++;
 		bldMap.put(name, ld);

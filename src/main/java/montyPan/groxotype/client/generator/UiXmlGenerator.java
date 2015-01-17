@@ -2,8 +2,11 @@ package montyPan.groxotype.client.generator;
 
 import java.util.ArrayList;
 
+import com.sencha.gxt.core.client.Style.LayoutRegion;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.TabPanel;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 import com.sencha.gxt.widget.core.client.container.ResizeContainer;
 
 public class UiXmlGenerator {
@@ -19,9 +22,15 @@ public class UiXmlGenerator {
 	private String processChild(Component child, int level) {
 		ldHelper.process(child);
 		if (child instanceof ResizeContainer) {
-			return processContainer((ResizeContainer)child, level);
+			//BorderLayout 要特別處理
+			if (child instanceof BorderLayoutContainer) {
+				return processBorderLayout((BorderLayoutContainer) child, level);
+			}
+			return processContainer((ResizeContainer) child, level);
+		//討厭的 TabPanel 也要特別處理
 		} else if (child instanceof TabPanel) {
 			return processTabPanel((TabPanel) child, level);
+		//其他的就直接印 tag 就可以了
 		} else {
 			return GenUtil.genTab(level) + nsHelper.all(child) + "\n";
 		}
@@ -69,14 +78,36 @@ public class UiXmlGenerator {
 		return code.toString();
 	}
 	
+	private String processBorderLayout(BorderLayoutContainer borderLayout, int level) {
+		StringBuffer result = new StringBuffer();
+		result.append(GenUtil.genTab(level) + nsHelper.header(borderLayout) + "\n");
+		
+		for (LayoutRegion lr : LayoutRegion.values()) {
+			if (borderLayout.getRegionWidget(lr) == null) {
+				continue;
+			}
+
+			Component child = (Component) borderLayout.getRegionWidget(lr);
+			String ldString = (lr == LayoutRegion.CENTER) ? "" :	//center 沒有 layout data
+				" layoutData=\"{" + ldHelper.border((BorderLayoutData) child.getLayoutData()) + "}\"";
+			String tagString = nsHelper.getNamespace(borderLayout) + ":" + lr.name().toLowerCase();
+			result.append(GenUtil.genTab(level + 1) + "<" + tagString + ldString + ">\n");
+			result.append(processChild(child, level + 2));
+			result.append(GenUtil.genTab(level + 1) + "</" + tagString + ">\n");
+		}
+		result.append(GenUtil.genTab(level) + nsHelper.tail(borderLayout) + "\n");
+		return result.toString();
+	}
+	
 	private String processTabPanel(TabPanel tabPanel, int level) {
 		StringBuffer result = new StringBuffer();
 		result.append(GenUtil.genTab(level) + nsHelper.header(tabPanel) + "\n");
 		for (int i = 0; i < tabPanel.getWidgetCount(); i++) {
 			Component child = (Component)tabPanel.getWidget(i);
-			result.append(GenUtil.genTab(level + 1) + "<" + nsHelper.getNamespace(tabPanel) + ":child config=\"{" + tabHelper.config(tabPanel.getConfig(child)) + "}\">\n");
+			String tagString = nsHelper.getNamespace(tabPanel) + ":child";
+			result.append(GenUtil.genTab(level + 1) + "<" + tagString + " config=\"{" + tabHelper.config(tabPanel.getConfig(child)) + "}\">\n");
 			result.append(processChild(child, level + 2));
-			result.append(GenUtil.genTab(level + 1) + "</" + nsHelper.getNamespace(tabPanel) + ":child>\n");
+			result.append(GenUtil.genTab(level + 1) + "</" + tagString + ">\n");
 		}
 		result.append(GenUtil.genTab(level) + nsHelper.tail(tabPanel) + "\n");
 		return result.toString();
